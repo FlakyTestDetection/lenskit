@@ -37,11 +37,12 @@ deploy:
     jdk: oraclejdk8
     repo: lenskit/lenskit
 notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/12b880d9f4086ef2a62c
-    on_success: always
-    on_failure: always
+  email: false
+  slack:
+    rooms: flakycov:U2MeVOPjdi4up1U793ubeIUZ
+    template:
+    - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch} by %{author} %{result} in %{duration}
+    - 'dashbot: %{repository_name} %{build_id}'
 env:
   global:
   - TERM=dumb
